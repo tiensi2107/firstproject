@@ -33,7 +33,7 @@ public class GpxGatewayService {
             GpxGatewayDTO gpxGatewayDTO = new GpxGatewayDTO(gpx, clientID, clientSecret, multipartFile.getOriginalFilename());
             logger.info("Receive gpx file request {} from {}",gpxGatewayDTO, clientID);
             amqpTemplate.convertAndSend(ExchangeName.RABBITMQ_EXCHANGE_DIRECT_REQUEST_MAIN, QueueName.RABBITMQ_QUEUE_GPX_REQUEST_MAIN, gpxGatewayDTO);
-            logger.info("Queue receive request {}",gpxGatewayDTO);
+            logger.info("Queue receive request {}", gpxGatewayDTO);
             return new ResponseEntity<>(HttpStatus.ACCEPTED);
         } catch (IOException e) {
             logger.error("IO exception occur when handling the gpx file", e);
