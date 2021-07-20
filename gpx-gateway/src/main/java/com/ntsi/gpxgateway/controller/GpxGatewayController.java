@@ -15,13 +15,15 @@ import java.io.IOException;
 
 @RestController
 public class GpxGatewayController {
-    @Autowired
     GpxGatewayService gpxGatewayService;
+    public GpxGatewayController(GpxGatewayService gpxGatewayService){
+        this.gpxGatewayService = gpxGatewayService;
+    }
 
-    @PostMapping(value = "/", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public ResponseEntity<?> uploadFile(@RequestParam(value = "file") MultipartFile file) throws IOException {
+    @PostMapping(value = "/upload", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResponseEntity<?> uploadFile(@RequestParam(value = "file") MultipartFile file, @RequestParam(value = "clientID") String clientID, @RequestParam("clientSecret") String clientSecret) throws IOException {
 
-       return gpxGatewayService.uploadFile(file);
+       return gpxGatewayService.handleFile(file, clientID, clientSecret);
 
     }
 
