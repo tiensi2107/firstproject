@@ -6,6 +6,7 @@
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/gpx-gateway/pom.xml" />
+        <option value="$PROJECT_DIR$/message-processor/pom.xml" />
       </list>
     </option>
   </component>

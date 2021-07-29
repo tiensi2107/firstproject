@@ -28,9 +28,6 @@ public class GpxMessageData extends TrackerMessageData {
     private Metadata metadata;
 
 
-    private List<WayPoint> wayPoints;
-
-
     private List<Track> tracks;
 
 
@@ -76,13 +73,6 @@ public class GpxMessageData extends TrackerMessageData {
         this.metadata = metadata;
     }
 
-    public List<WayPoint> getWayPoints() {
-        return wayPoints;
-    }
-
-    public void setWayPoints(List<WayPoint> wayPoints) {
-        this.wayPoints = wayPoints;
-    }
 
     public List<Track> getTracks() {
         return tracks;
@@ -115,7 +105,6 @@ public class GpxMessageData extends TrackerMessageData {
                 .append("fileName", fileName)
                 .append("version", version)
                 .append("metadata", metadata)
-                .append("wayPoints", wayPoints)
                 .append("tracks", tracks)
                 .append("createdTime", createdTime)
                 .append("updatedTime", updatedTime)

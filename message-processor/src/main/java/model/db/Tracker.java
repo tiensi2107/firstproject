@@ -28,7 +28,6 @@ public class Tracker implements Serializable {
     private Metadata metadata;
 
 
-    private List<WayPoint> wayPoints;
 
 
     private List<Track> tracks;
@@ -82,13 +81,6 @@ public class Tracker implements Serializable {
         this.metadata = metadata;
     }
 
-    public List<WayPoint> getWayPoints() {
-        return wayPoints;
-    }
-
-    public void setWayPoints(List<WayPoint> wayPoints) {
-        this.wayPoints = wayPoints;
-    }
 
     public List<Track> getTracks() {
         return tracks;
@@ -105,7 +97,6 @@ public class Tracker implements Serializable {
                 .append("diverId", driverID)
                 .append("groupId", groupID)
                 .append("filename", fileName)
-                .append("waypoints", wayPoints)
                 .append("track", tracks)
                 .append("version", version)
                 .append("metadata", metadata)
