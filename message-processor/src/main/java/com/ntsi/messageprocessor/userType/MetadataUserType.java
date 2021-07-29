@@ -2,8 +2,8 @@ package com.ntsi.messageprocessor.userType;
 
 import com.google.gson.Gson;
 import com.ntsi.gpxgateway.gson.GPXGson;
-import model.dto.Metadata;
-import model.dto.Version;
+import com.ntsi.messageprocessor.model.dto.Metadata;
+import com.ntsi.messageprocessor.model.dto.Version;
 import org.hibernate.HibernateException;
 import org.hibernate.engine.spi.SharedSessionContractImplementor;
 import org.postgresql.util.PGobject;
@@ -14,7 +14,7 @@ import java.sql.SQLException;
 import java.sql.Types;
 
 public class MetadataUserType extends  MutableUserType{
-    public static final String TYPE = "com.karros.common.model.usertype.MetadataUserType";
+    public static final String TYPE = "com.karros.common.com.ntsi.messageprocessor.model.usertype.MetadataUserType";
 
     private static final int[] SQL_TYPES = { Types.LONGVARCHAR };
 

@@ -1,4 +1,4 @@
-package model.rabbitmq;
+package com.ntsi.messageprocessor.model.rabbitmq;
 
 public interface QueueName {
     String TRACKER_MESSAGE_MAIN = "tracker.main";

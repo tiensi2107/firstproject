@@ -1,4 +1,4 @@
-package model.dto;
+package com.ntsi.messageprocessor.model.dto;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 

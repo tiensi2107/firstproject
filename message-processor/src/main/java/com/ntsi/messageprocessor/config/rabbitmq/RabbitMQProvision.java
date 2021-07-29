@@ -1,6 +1,6 @@
 package com.ntsi.messageprocessor.config.rabbitmq;
 
-import model.rabbitmq.QueueName;
+import com.ntsi.messageprocessor.model.rabbitmq.QueueName;
 import org.springframework.amqp.core.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

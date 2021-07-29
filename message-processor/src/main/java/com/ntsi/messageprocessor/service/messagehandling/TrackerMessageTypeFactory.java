@@ -1,6 +1,6 @@
 package com.ntsi.messageprocessor.service.messagehandling;
 
-import model.dto.TrackerDataType;
+import com.ntsi.messageprocessor.model.dto.TrackerDataType;
 
 public class TrackerMessageTypeFactory {
     public static final String GPX_METADATA_DECORATOR = "gpxMetadata";

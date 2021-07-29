@@ -1,12 +1,8 @@
-package model.db;
+package com.ntsi.messageprocessor.model.db;
 
-import com.ntsi.gpxgateway.annotation.Suppress;
-import model.dto.Metadata;
+import com.ntsi.messageprocessor.model.dto.Metadata;
 import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
 
-import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 

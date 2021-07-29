@@ -1,13 +1,9 @@
 package com.ntsi.messageprocessor.service.messagehandling;
 
-import com.ntsi.gpxgateway.rabbitmq.ExchangeName;
-import model.db.*;
-import model.dto.TrackerMassage;
-import model.rabbitmq.QueueName;
+import com.ntsi.messageprocessor.model.db.*;
+import com.ntsi.messageprocessor.model.dto.TrackerMassage;
+import com.ntsi.messageprocessor.model.rabbitmq.QueueName;
 import org.apache.commons.collections.CollectionUtils;
-import org.apache.commons.collections.MapUtils;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.stereotype.Service;
 

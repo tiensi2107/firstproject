@@ -1,4 +1,4 @@
-package model.db;
+package com.ntsi.messageprocessor.model.db;
 
 public enum MetricType {
     TRACKER_DATA_GPS_LOCATION_LAT_LNG,

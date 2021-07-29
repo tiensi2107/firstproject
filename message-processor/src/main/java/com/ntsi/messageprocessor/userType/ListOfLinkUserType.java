@@ -2,7 +2,7 @@ package com.ntsi.messageprocessor.userType;
 
 import com.google.gson.Gson;
 import com.ntsi.gpxgateway.gson.GPXGson;
-import model.dto.Link;
+import com.ntsi.messageprocessor.model.dto.Link;
 import org.hibernate.HibernateException;
 import org.hibernate.engine.spi.SharedSessionContractImplementor;
 import org.postgresql.util.PGobject;
@@ -21,7 +21,7 @@ public class ListOfLinkUserType extends MutableUserType{
 
     private Gson gson = GPXGson.getGson();
 
-    public static final String TYPE = "com.karros.common.model.usertype.ListOfLinksUserType";
+    public static final String TYPE = "com.karros.common.com.ntsi.messageprocessor.model.usertype.ListOfLinksUserType";
 
     @Override
     public Object deepCopy(Object object) throws HibernateException {

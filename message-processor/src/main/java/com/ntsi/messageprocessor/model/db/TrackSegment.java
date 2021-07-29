@@ -1,12 +1,7 @@
-package model.db;
+package com.ntsi.messageprocessor.model.db;
 
-import com.ntsi.gpxgateway.annotation.Suppress;
-import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
 
-import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;

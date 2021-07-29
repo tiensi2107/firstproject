@@ -1,4 +1,4 @@
-package model.dto;
+package com.ntsi.messageprocessor.model.dto;
 
 public class Person {
     private String name;

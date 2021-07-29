@@ -2,11 +2,11 @@ package com.ntsi.messageprocessor.service.timeseries.impl;
 
 import com.ntsi.messageprocessor.service.timeseries.TimeSeriesListener;
 import com.ntsi.messageprocessor.service.timeseries.TimeseriesService;
-import model.db.MetricType;
-import model.db.TimeSeriesDataitem;
-import model.dto.GeoTimeSeriesObject;
-import model.dto.TrackerMassage;
-import model.rabbitmq.QueueName;
+import com.ntsi.messageprocessor.model.db.MetricType;
+import com.ntsi.messageprocessor.model.db.TimeSeriesDataitem;
+import com.ntsi.messageprocessor.model.dto.GeoTimeSeriesObject;
+import com.ntsi.messageprocessor.model.dto.TrackerMassage;
+import com.ntsi.messageprocessor.model.rabbitmq.QueueName;
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.stereotype.Service;
 

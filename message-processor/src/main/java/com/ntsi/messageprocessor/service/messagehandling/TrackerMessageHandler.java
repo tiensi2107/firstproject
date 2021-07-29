@@ -1,10 +1,10 @@
 package com.ntsi.messageprocessor.service.messagehandling;
 
 import com.ntsi.messageprocessor.service.timeseries.TimeseriesService;
-import model.db.MetricType;
-import model.db.TimeSeriesDataitem;
-import model.db.Tracker;
-import model.dto.TrackerMassage;
+import com.ntsi.messageprocessor.model.db.MetricType;
+import com.ntsi.messageprocessor.model.db.TimeSeriesDataitem;
+import com.ntsi.messageprocessor.model.db.Tracker;
+import com.ntsi.messageprocessor.model.dto.TrackerMassage;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.LocalDateTime;

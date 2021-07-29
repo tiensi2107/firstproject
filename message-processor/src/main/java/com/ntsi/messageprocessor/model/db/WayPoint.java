@@ -1,13 +1,9 @@
-package model.db;
+package com.ntsi.messageprocessor.model.db;
 
-
-import model.dto.Link;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.time.LocalDateTime;
-import java.util.List;
-
 
 
 public class WayPoint  {

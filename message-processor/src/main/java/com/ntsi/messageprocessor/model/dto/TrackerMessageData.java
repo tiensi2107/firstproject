@@ -1,6 +1,5 @@
-package model.dto;
+package com.ntsi.messageprocessor.model.dto;
 
-import model.dto.TrackerDataType;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.time.LocalDateTime;

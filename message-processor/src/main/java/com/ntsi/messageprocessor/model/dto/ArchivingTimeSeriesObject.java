@@ -1,22 +1,20 @@
-package model.dto;
+package com.ntsi.messageprocessor.model.dto;
 
-import model.db.TimeSeriesDataitem;
+import com.ntsi.messageprocessor.model.db.TimeSeriesDataitem;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class GeoTimeSeriesObject {
-    List<TimeSeriesDataitem> timeSeriesDataitems = new ArrayList<>();
+public class ArchivingTimeSeriesObject {
+    private List<TimeSeriesDataitem> timeSeriesDataitems = new ArrayList<>();
 
-    public GeoTimeSeriesObject(List<TimeSeriesDataitem> timeSeriesDataitems) {
+    public ArchivingTimeSeriesObject(List<TimeSeriesDataitem> timeSeriesDataitems) {
         this.timeSeriesDataitems = timeSeriesDataitems;
     }
-    public GeoTimeSeriesObject(TimeSeriesDataitem timeSeriesDataitem){
-        this.timeSeriesDataitems = Collections.singletonList(timeSeriesDataitem);
-    }
-    public GeoTimeSeriesObject() {
+
+    public ArchivingTimeSeriesObject() {
     }
 
     public List<TimeSeriesDataitem> getTimeSeriesDataitems() {
@@ -25,6 +23,9 @@ public class GeoTimeSeriesObject {
 
     public void setTimeSeriesDataitems(List<TimeSeriesDataitem> timeSeriesDataitems) {
         this.timeSeriesDataitems = timeSeriesDataitems;
+    }
+    public ArchivingTimeSeriesObject(TimeSeriesDataitem timeSeriesDataitem){
+        this.timeSeriesDataitems = Collections.singletonList(timeSeriesDataitem);
     }
     public void add(TimeSeriesDataitem timeSeriesDataitem){
         this.timeSeriesDataitems.add(timeSeriesDataitem);
@@ -36,7 +37,7 @@ public class GeoTimeSeriesObject {
     @Override
     public String toString() {
         return new ToStringBuilder(this)
-                .append("timeseriesdataitems", timeSeriesDataitems)
+                .append("timeseriesdataitem", timeSeriesDataitems)
                 .toString();
     }
 }

@@ -1,7 +1,7 @@
 package com.ntsi.messageprocessor.service.tracker.impl;
 
 import com.ntsi.messageprocessor.service.tracker.TrackerService;
-import model.db.Tracker;
+import com.ntsi.messageprocessor.model.db.Tracker;
 import org.springframework.stereotype.Service;
 
 import java.util.Objects;

@@ -1,6 +1,6 @@
 package com.ntsi.messageprocessor.service.messagehandling;
 
-import model.dto.TrackerMassage;
+import com.ntsi.messageprocessor.model.dto.TrackerMassage;
 
 public abstract class TrackerHandlerDecorator implements MessageHandler{
     private MessageHandler decoratedHandler;

@@ -1,8 +1,7 @@
 package com.ntsi.messageprocessor.service.timeseries;
 
-import model.db.TimeSeriesDataitem;
-import model.dto.TrackerMassage;
-import org.apache.catalina.LifecycleState;
+import com.ntsi.messageprocessor.model.db.TimeSeriesDataitem;
+import com.ntsi.messageprocessor.model.dto.TrackerMassage;
 import org.apache.commons.collections.CollectionUtils;
 import org.springframework.stereotype.Service;
 

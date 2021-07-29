@@ -1,4 +1,4 @@
-package model.dto;
+package com.ntsi.messageprocessor.model.dto;
 
 import com.ntsi.messageprocessor.userType.DeepCopyable;
 import org.apache.commons.collections.CollectionUtils;

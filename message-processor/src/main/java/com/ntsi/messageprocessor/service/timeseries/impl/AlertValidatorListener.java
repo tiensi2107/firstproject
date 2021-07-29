@@ -2,8 +2,8 @@ package com.ntsi.messageprocessor.service.timeseries.impl;
 
 import com.ntsi.messageprocessor.service.timeseries.TimeSeriesListener;
 import com.ntsi.messageprocessor.service.timeseries.TimeseriesService;
-import model.db.TimeSeriesDataitem;
-import model.dto.TrackerMassage;
+import com.ntsi.messageprocessor.model.db.TimeSeriesDataitem;
+import com.ntsi.messageprocessor.model.dto.TrackerMassage;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;

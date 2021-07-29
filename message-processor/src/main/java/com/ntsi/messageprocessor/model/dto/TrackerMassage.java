@@ -1,6 +1,6 @@
-package model.dto;
+package com.ntsi.messageprocessor.model.dto;
 
-import model.db.Tracker;
+import com.ntsi.messageprocessor.model.db.Tracker;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 public class TrackerMassage {

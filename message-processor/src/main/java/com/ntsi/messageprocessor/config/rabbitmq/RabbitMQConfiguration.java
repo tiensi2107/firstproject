@@ -1,15 +1,13 @@
 package com.ntsi.messageprocessor.config.rabbitmq;
 
-import com.ntsi.gpxgateway.configuration.RabbitMQMessageConverter;
 import com.ntsi.gpxgateway.configuration.RabbitQueueConfiguration;
 import com.ntsi.messageprocessor.service.consumer.TrackerMessageConsumer;
-import model.rabbitmq.QueueName;
+import com.ntsi.messageprocessor.model.rabbitmq.QueueName;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer;
 import org.springframework.amqp.rabbit.listener.adapter.MessageListenerAdapter;
-import org.springframework.amqp.support.converter.MessageConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

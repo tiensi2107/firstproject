@@ -1,7 +1,7 @@
 package com.ntsi.messageprocessor.service.timeseries;
 
-import model.db.TimeSeriesDataitem;
-import model.dto.TrackerMassage;
+import com.ntsi.messageprocessor.model.db.TimeSeriesDataitem;
+import com.ntsi.messageprocessor.model.dto.TrackerMassage;
 
 import java.util.List;
 

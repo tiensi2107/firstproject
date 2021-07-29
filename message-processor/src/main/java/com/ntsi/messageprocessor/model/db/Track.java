@@ -1,16 +1,9 @@
-package model.db;
+package com.ntsi.messageprocessor.model.db;
 
 
-import com.ntsi.gpxgateway.annotation.Suppress;
-import com.ntsi.messageprocessor.userType.ListOfLinkUserType;
-import model.dto.Link;
-import org.apache.commons.collections.CollectionUtils;
+import com.ntsi.messageprocessor.model.dto.Link;
 import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
-import org.hibernate.annotations.Type;
 
-import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;

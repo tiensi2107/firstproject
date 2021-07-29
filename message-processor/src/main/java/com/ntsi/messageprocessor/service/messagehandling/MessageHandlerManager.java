@@ -1,8 +1,8 @@
 package com.ntsi.messageprocessor.service.messagehandling;
 
-import model.dto.TrackerDataType;
-import model.dto.TrackerMassage;
-import model.dto.TrackerMessageData;
+import com.ntsi.messageprocessor.model.dto.TrackerDataType;
+import com.ntsi.messageprocessor.model.dto.TrackerMassage;
+import com.ntsi.messageprocessor.model.dto.TrackerMessageData;
 import org.springframework.stereotype.Component;
 
 

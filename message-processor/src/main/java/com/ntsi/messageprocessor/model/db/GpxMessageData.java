@@ -1,10 +1,10 @@
-package model.db;
+package com.ntsi.messageprocessor.model.db;
 
 
-import model.dto.Metadata;
+import com.ntsi.messageprocessor.model.dto.Metadata;
 
-import model.dto.TrackerDataType;
-import model.dto.TrackerMessageData;
+import com.ntsi.messageprocessor.model.dto.TrackerDataType;
+import com.ntsi.messageprocessor.model.dto.TrackerMessageData;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.time.LocalDateTime;
