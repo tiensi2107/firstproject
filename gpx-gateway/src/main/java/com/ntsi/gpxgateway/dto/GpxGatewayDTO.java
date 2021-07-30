@@ -3,7 +3,7 @@ package com.ntsi.gpxgateway.dto;
 import io.jenetics.jpx.GPX;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-public class GpxGatewayDTO {
+public class GpxGatewayDTO{
     private GPX gpx;
     private String clientID;
     private String clientSecret;

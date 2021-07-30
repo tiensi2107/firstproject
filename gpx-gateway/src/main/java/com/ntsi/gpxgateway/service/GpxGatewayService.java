@@ -1,6 +1,6 @@
 package com.ntsi.gpxgateway.service;
 
-import com.ntsi.gpxgateway.dto.GpxGatewayDTO;
+import com.ntsi.gpxgateway.dto.*;
 import com.ntsi.gpxgateway.rabbitmq.ExchangeName;
 import com.ntsi.gpxgateway.rabbitmq.QueueName;
 import io.jenetics.jpx.GPX;
@@ -31,8 +31,16 @@ public class GpxGatewayService {
         try (InputStream inputStream = new ByteArrayInputStream(multipartFile.getBytes())) {
             GPX gpx = GPX.read(inputStream);
             GpxGatewayDTO gpxGatewayDTO = new GpxGatewayDTO(gpx, clientID, clientSecret, multipartFile.getOriginalFilename());
+
+            GpxMessageData gpxMessageData = new GpxMessageData();
+            gpxMessageData.setGpxGatewayDTO(gpxGatewayDTO);
+
+            TrackerMessageInfo trackerMessageInfo = new TrackerMessageInfo();
+            trackerMessageInfo.setTrackerMessageData(gpxMessageData);
+
+
             logger.info("Receive gpx file request {} from {}",gpxGatewayDTO, clientID);
-            amqpTemplate.convertAndSend(ExchangeName.RABBITMQ_EXCHANGE_DIRECT_REQUEST_MAIN, QueueName.RABBITMQ_QUEUE_GPX_REQUEST_MAIN, gpxGatewayDTO);
+            amqpTemplate.convertAndSend(ExchangeName.RABBITMQ_EXCHANGE_DIRECT_REQUEST_MAIN, QueueName.RABBITMQ_QUEUE_GPX_REQUEST_MAIN, trackerMessageInfo);
             logger.info("Queue receive request {}", gpxGatewayDTO);
             return new ResponseEntity<>(HttpStatus.ACCEPTED);
         } catch (IOException e) {
