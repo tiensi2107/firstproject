@@ -1,6 +1,6 @@
 package com.ntsi.messageprocessor.service.messagehandling;
 
-import com.ntsi.messageprocessor.model.dto.TrackerMassage;
+import model.dto.TrackerMessage;
 
 public abstract class TrackerHandlerDecorator implements MessageHandler{
     private MessageHandler decoratedHandler;
@@ -10,7 +10,8 @@ public abstract class TrackerHandlerDecorator implements MessageHandler{
     }
 
     @Override
-    public void handle(TrackerMassage trackerMassage) {
-        decoratedHandler.handle(trackerMassage);
+    public void handle(TrackerMessage trackerMessage) {
+        decoratedHandler.handle(trackerMessage);
     }
+
 }

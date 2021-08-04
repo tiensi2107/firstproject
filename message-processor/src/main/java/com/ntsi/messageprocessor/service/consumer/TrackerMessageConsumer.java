@@ -2,9 +2,9 @@ package com.ntsi.messageprocessor.service.consumer;
 
 import com.ntsi.messageprocessor.service.messagehandling.MessageHandlerManager;
 import com.ntsi.messageprocessor.service.tracker.TrackerService;
-import com.ntsi.messageprocessor.model.db.Tracker;
-import com.ntsi.messageprocessor.model.dto.TrackerMassage;
-import com.ntsi.messageprocessor.model.dto.TrackerMessageInfo;
+import model.db.Tracker;
+import model.dto.TrackerMessage;
+import model.dto.TrackerMessageInfo;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.amqp.AmqpRejectAndDontRequeueException;
@@ -30,7 +30,7 @@ public class TrackerMessageConsumer {
                 log.warn("Could not found tracker Imei {}", trackerMessageInfo.getImei());
                 return;
             }
-            TrackerMassage trackerMassage = new TrackerMassage(tracker, trackerMessageInfo.getTrackerMessageData());
+            TrackerMessage trackerMassage = new TrackerMessage(tracker, trackerMessageInfo.getTrackerMessageData());
             messageHandlerManager.handle(trackerMassage);
 
         }

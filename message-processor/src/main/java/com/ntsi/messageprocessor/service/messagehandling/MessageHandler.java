@@ -1,7 +1,7 @@
 package com.ntsi.messageprocessor.service.messagehandling;
 
-import com.ntsi.messageprocessor.model.dto.TrackerMassage;
+import model.dto.TrackerMessage;
 
 public interface MessageHandler {
-    void handle(TrackerMassage trackerMassage);
+    void handle(TrackerMessage trackerMessage);
 }

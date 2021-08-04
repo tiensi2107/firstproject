@@ -1,11 +1,11 @@
 package com.ntsi.messageprocessor.service.messagehandling;
 
-import com.ntsi.messageprocessor.model.dto.TrackerDataType;
+import model.dto.TrackerMessageDataType;
 
 public class TrackerMessageTypeFactory {
     public static final String GPX_METADATA_DECORATOR = "gpxMetadata";
 
-    public static String getBeanDefinitionStr(TrackerDataType trackerDataType){
+    public static String getBeanDefinitionStr(TrackerMessageDataType trackerDataType){
         switch (trackerDataType){
             case GPX:
                 return GPX_METADATA_DECORATOR;

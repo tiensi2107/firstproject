@@ -1,12 +1,12 @@
 package com.ntsi.messageprocessor.service.timeseries.impl;
 
+import com.ntsi.messageprocessor.config.QueueName;
 import com.ntsi.messageprocessor.service.timeseries.TimeSeriesListener;
-import com.ntsi.messageprocessor.service.timeseries.TimeseriesService;
-import com.ntsi.messageprocessor.model.db.MetricType;
-import com.ntsi.messageprocessor.model.db.TimeSeriesDataitem;
-import com.ntsi.messageprocessor.model.dto.GeoTimeSeriesObject;
-import com.ntsi.messageprocessor.model.dto.TrackerMassage;
-import com.ntsi.messageprocessor.model.rabbitmq.QueueName;
+import com.ntsi.messageprocessor.service.timeseries.TimeSeriesService;
+import model.db.MetricType;
+import model.db.TimeSeriesDataitem;
+import model.dto.GeoTimeSeriesObject;
+import model.dto.TrackerMessage;
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.stereotype.Service;
 
@@ -15,12 +15,12 @@ import java.util.List;
 
 @Service
 public class GeoDecoderListener implements TimeSeriesListener {
-    private final TimeseriesService timeseriesService;
+    private final TimeSeriesService timeseriesService;
 
     private final AmqpTemplate amqpTemplate;
 
 
-    public GeoDecoderListener(TimeseriesService timeseriesService, AmqpTemplate amqpTemplate) {
+    public GeoDecoderListener(TimeSeriesService timeseriesService, AmqpTemplate amqpTemplate) {
         this.timeseriesService = timeseriesService;
         this.amqpTemplate = amqpTemplate;
     }
@@ -30,7 +30,7 @@ public class GeoDecoderListener implements TimeSeriesListener {
     }
 
     @Override
-    public void onInsertMultiple(List<TimeSeriesDataitem> items, TrackerMassage trackerMassage) {
+    public void onInsertMultiple(List<TimeSeriesDataitem> items, TrackerMessage trackerMassage) {
         TimeSeriesDataitem locationItem = getLocationItem(items);
         if (locationItem != null) {
             GeoTimeSeriesObject geoTimeSeriesObject = new GeoTimeSeriesObject(locationItem);

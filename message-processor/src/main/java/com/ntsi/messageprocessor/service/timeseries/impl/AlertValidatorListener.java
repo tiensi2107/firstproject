@@ -1,9 +1,9 @@
 package com.ntsi.messageprocessor.service.timeseries.impl;
 
 import com.ntsi.messageprocessor.service.timeseries.TimeSeriesListener;
-import com.ntsi.messageprocessor.service.timeseries.TimeseriesService;
-import com.ntsi.messageprocessor.model.db.TimeSeriesDataitem;
-import com.ntsi.messageprocessor.model.dto.TrackerMassage;
+import com.ntsi.messageprocessor.service.timeseries.TimeSeriesService;
+import model.db.TimeSeriesDataitem;
+import model.dto.TrackerMessage;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
@@ -11,10 +11,10 @@ import java.util.List;
 
 @Service
 public class AlertValidatorListener implements TimeSeriesListener {
-    private final TimeseriesService timeseriesService;
+    private final TimeSeriesService timeseriesService;
 
 
-    public AlertValidatorListener(TimeseriesService timeseriesService) {
+    public AlertValidatorListener(TimeSeriesService timeseriesService) {
         this.timeseriesService = timeseriesService;
 
     }
@@ -24,7 +24,7 @@ public class AlertValidatorListener implements TimeSeriesListener {
     }
 
     @Override
-    public void onInsertMultiple(List<TimeSeriesDataitem> items, TrackerMassage trackerMassage) {
+    public void onInsertMultiple(List<TimeSeriesDataitem> items, TrackerMessage trackerMassage) {
 
     }
 }

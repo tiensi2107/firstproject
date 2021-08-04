@@ -1,6 +1,5 @@
 package com.ntsi.messageprocessor.service.messagehandling;
 
-
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.beans.factory.support.BeanDefinitionBuilder;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
@@ -13,10 +12,10 @@ public class DecoratorBeanDefinition implements BeanDefinitionRegistryPostProces
 
     @Override
     public void postProcessBeanDefinitionRegistry(BeanDefinitionRegistry registry) {
-       BeanDefinitionBuilder gpxMetadata = BeanDefinitionBuilder
-               .rootBeanDefinition(TrackerMetadataHandlingDecorator.class);
-       gpxMetadata.addPropertyReference(DECORATED_HANDLER,"gpxMessageHandler");
-       registry.registerBeanDefinition(TrackerMessageTypeFactory.GPX_METADATA_DECORATOR, gpxMetadata.getBeanDefinition());
+        BeanDefinitionBuilder gpxMetadata = BeanDefinitionBuilder
+                .rootBeanDefinition(TrackerMetadataHandlingDecorator.class);
+        gpxMetadata.addPropertyReference(DECORATED_HANDLER,"gpxMessageHandler");
+        registry.registerBeanDefinition(TrackerMessageTypeFactory.GPX_METADATA_DECORATOR, gpxMetadata.getBeanDefinition());
 
 
     }

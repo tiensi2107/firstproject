@@ -1,10 +1,9 @@
 package com.ntsi.messageprocessor.service.messagehandling;
 
-import com.ntsi.messageprocessor.model.dto.TrackerDataType;
-import com.ntsi.messageprocessor.model.dto.TrackerMassage;
-import com.ntsi.messageprocessor.model.dto.TrackerMessageData;
+import model.dto.TrackerMessage;
+import model.dto.TrackerMessageData;
+import model.dto.TrackerMessageDataType;
 import org.springframework.stereotype.Component;
-
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +11,6 @@ import java.util.Map;
 
 @Component
 public class MessageHandlerManager {
-
     private final Map<String, TrackerMetadataHandlingDecorator> trackerMetadataHandlingDecorators;
 
     public MessageHandlerManager(Map<String,TrackerMetadataHandlingDecorator> trackerMetadataHandlingDecorators) {
@@ -20,14 +18,14 @@ public class MessageHandlerManager {
     }
 
 
-    public void handle(TrackerMassage trackerMassage){
+    public void handle(TrackerMessage trackerMassage){
         TrackerMessageData trackerMessageData = trackerMassage.getTrackerMessageData();
-        List<MessageHandler> handlers = getHandler(trackerMessageData.getMessageType());
+        List<MessageHandler> handlers = getHandler(trackerMessageData.getMessageDataType());
         handlers.forEach(messageHandler -> {
             messageHandler.handle(trackerMassage);
         });
     }
-    private List<MessageHandler> getHandler(TrackerDataType trackerDataType){
+    private List<MessageHandler> getHandler(TrackerMessageDataType trackerDataType){
         List<MessageHandler> handlers = new ArrayList<>();
 
         String beanDef = TrackerMessageTypeFactory.getBeanDefinitionStr(trackerDataType);
