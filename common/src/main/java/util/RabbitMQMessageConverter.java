@@ -13,6 +13,7 @@ import org.springframework.lang.Nullable;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
+import java.time.ZonedDateTime;
 
 
 public class RabbitMQMessageConverter extends Jackson2JsonMessageConverter {

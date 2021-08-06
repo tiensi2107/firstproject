@@ -22,11 +22,13 @@ import java.io.InputStream;
 public class GpxFileService {
     private static Logger log = LogManager.getLogger(GpxFileService.class);
 
-    private final AmqpTemplate amqpTemplate;
+    private AmqpTemplate amqpTemplate;
 
-    public GpxFileService(AmqpTemplate amqpTemplate) {
+    public GpxFileService(AmqpTemplate amqpTemplate){
         this.amqpTemplate = amqpTemplate;
     }
+
+
 
     public ResponseEntity<?> handle(MultipartFile multipartFile, String clientId, String clientSecret){
         try (InputStream inputStream = new ByteArrayInputStream(multipartFile.getBytes())) {
@@ -38,11 +40,14 @@ public class GpxFileService {
             gpxMessageData.setGpxRequest(gpxRequest);
 
             TrackerMessageInfo trackerMessageInfo = new TrackerMessageInfo();
+            trackerMessageInfo.setImei("abcdef123456");
             trackerMessageInfo.setTrackerMessageData(gpxMessageData);
+
             log.info("Receive gpx file request {} from {}", gpxRequest, clientId);
             amqpTemplate.convertAndSend(ExchangeName.RABBITMQ_EXCHANGE_DIRECT_REQUEST_MAIN,
                     QueueName.RABBITMQ_QUEUE_GPX_REQUEST_MAIN, trackerMessageInfo);
             log.info("Queued gpx file request {}", gpxRequest);
+
             return new ResponseEntity<>(HttpStatus.ACCEPTED);
         } catch (IOException e) {
             log.error("IO exception occurs when handling the gpx file", e);

@@ -42,7 +42,7 @@ public class GpxMessageData extends TrackerMessageData {
     }
 
     public void setGpxRequest(GPXRequest gpxRequest) {
-        this.gpxRequest = gpxRequest;
+        this.gpxRequest = new GPXRequest(gpxRequest);
     }
 
     private LocalDateTime createdTime = LocalDateTime.now(ZoneOffset.UTC);

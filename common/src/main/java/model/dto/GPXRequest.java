@@ -25,6 +25,12 @@ public class GPXRequest {
         this.clientSecret = clientSecret;
         this.filename = filename;
     }
+    public GPXRequest(GPXRequest gpxRequest){
+        this.gpx = gpxRequest.gpx;
+        this.clientId = gpxRequest.clientId;
+        this.clientSecret = gpxRequest.clientSecret;
+        this.filename = gpxRequest.filename;
+    }
 
     public GPX getGpx() {
         return gpx;
@@ -74,8 +80,10 @@ public class GPXRequest {
     public String toString() {
         return new ToStringBuilder(this)
                 .append("clientId", clientId)
+                .append("clientSecret", clientSecret)
                 .append("filename", filename)
                 .append("consumerAttempts", consumerAttempts)
+                .append("gpx", gpx)
                 .toString();
     }
 }

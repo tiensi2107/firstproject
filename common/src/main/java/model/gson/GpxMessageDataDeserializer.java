@@ -8,7 +8,7 @@ import org.apache.logging.log4j.Logger;
 
 import java.lang.reflect.Type;
 
-public class GpxMessageDataDeserializer implements JsonDeserializer<TrackerMessageData> {
+public class GpxMessageDataDeserializer implements JsonDeserializer<TrackerMessageData> , JsonSerializer<TrackerMessageData>{
     private static final Logger log = LogManager.getLogger(GpxMessageDataDeserializer.class);
     @Override
     public TrackerMessageData deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
@@ -22,5 +22,12 @@ public class GpxMessageDataDeserializer implements JsonDeserializer<TrackerMessa
             log.error("Get error when deserialize tracker message data {}"+ e.getMessage());
         }
         return trackerMessageData;
+    }
+
+    @Override
+    public JsonElement serialize(TrackerMessageData trackerMessageData, Type type, JsonSerializationContext context) {
+        JsonElement jsonElement = context.serialize(trackerMessageData, trackerMessageData.getClass());
+        jsonElement.getAsJsonObject().get(TrackerMessageData.MESSAGE_TYPE).getAsString();
+        return jsonElement;
     }
 }

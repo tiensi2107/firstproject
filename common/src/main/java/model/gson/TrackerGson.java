@@ -3,6 +3,7 @@ package model.gson;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import model.db.GpxMessageData;
+import model.dto.TrackerMessageData;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import util.TimeUtil;
@@ -94,7 +95,8 @@ public class TrackerGson {
                 builder.serializeNulls();
                 break;
             case MESSAGE:
-                builder.registerTypeAdapter(GpxMessageData.class, new GpxMessageDataDeserializer()).create();
+                builder.registerTypeAdapter(TrackerMessageData.class,
+                        new GpxMessageDataDeserializer()).create();
                 break;
             default:
                 break;

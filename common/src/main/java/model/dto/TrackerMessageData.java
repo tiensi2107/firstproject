@@ -17,8 +17,6 @@ public abstract class TrackerMessageData {
         this.messageDataType = messageDataType;
     }
 
-    public TrackerMessageData() {
-    }
 
     public static TrackerMessageData getTrackerMessageData(TrackerMessageDataType type, String jsonData) throws Exception{
         switch (type){
