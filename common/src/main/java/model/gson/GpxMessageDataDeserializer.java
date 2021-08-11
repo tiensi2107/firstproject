@@ -19,7 +19,7 @@ public class GpxMessageDataDeserializer implements JsonDeserializer<TrackerMessa
             trackerMessageData = TrackerMessageData.getTrackerMessageData(type, jsonData);
         }
         catch (Exception e){
-            log.error("Get error when deserialize tracker message data {}"+ e.getMessage());
+            log.error("Get error when deserialize tracker message data "+ e.getMessage());
         }
         return trackerMessageData;
     }

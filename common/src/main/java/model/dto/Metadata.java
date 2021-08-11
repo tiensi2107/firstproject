@@ -1,11 +1,15 @@
 package model.dto;
 
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.time.ZoneOffset;
+import java.util.ArrayList;
 import java.util.List;
 
-public class Metadata {
+public class Metadata implements Serializable{
     private String name;
 
     private String description;
@@ -19,6 +23,27 @@ public class Metadata {
     private String keywords;
 
     public Metadata() {
+    }
+
+    public Metadata(io.jenetics.jpx.Metadata metadata) {
+        if (metadata != null) {
+            this.name = metadata.getName().orElse(null);
+            this.description = metadata.getDescription().orElse(null);
+            this.author = new Person(metadata.getAuthor().orElse(null));
+
+            List<Link> newLinks = new ArrayList<>();
+            List<io.jenetics.jpx.Link> links = metadata.getLinks();
+            if (CollectionUtils.isNotEmpty(links)) {
+                links.forEach(link -> {
+                    newLinks.add(new Link(link));
+                });
+            }
+
+            this.links = newLinks;
+            metadata.getTime().ifPresent(zonedDateTime -> this.time = LocalDateTime.ofInstant(zonedDateTime.toInstant(), ZoneOffset.UTC));
+
+            this.keywords = metadata.getKeywords().orElse(null);
+        }
     }
 
 

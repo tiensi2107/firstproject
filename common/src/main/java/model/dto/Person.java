@@ -5,6 +5,13 @@ public class Person {
     private Email email;
     private Link link;
 
+    public Person(io.jenetics.jpx.Person person) {
+        if (person != null) {
+            this.name = person.getName().orElse(null);
+            this.email = new Email(person.getEmail().orElse(null));
+            this.link = new Link(person.getLink().orElse(null));
+        }
+    }
 
     public String getName() {
         return name;

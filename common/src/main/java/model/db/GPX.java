@@ -1,21 +1,16 @@
 package model.db;
 
-import model.dto.GPXRequest;
 import model.dto.Metadata;
-import model.dto.TrackerMessageData;
-import model.dto.TrackerMessageDataType;
-import model.gson.TrackerGson;
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
+import java.util.ArrayList;
 import java.util.List;
 
-public class GpxMessageData extends TrackerMessageData {
-    private Long id;
-
-
-    private String fileName;
+public class GPX implements Serializable{
 
 
     private String version;
@@ -24,47 +19,33 @@ public class GpxMessageData extends TrackerMessageData {
     private Metadata metadata;
 
 
+
     private List<Track> tracks;
 
-    private GPXRequest gpxRequest;
 
-    public GpxMessageData() {
-        super(TrackerMessageDataType.GPX);
+
+    public GPX() {
     }
 
-    public static GpxMessageData fromJson(String jsonData) {
-        return TrackerGson.getGson(TrackerGson.GsonAdapter.ISO_8601_NO_MILLI).fromJson(jsonData, GpxMessageData.class);
-    }
+    public GPX(io.jenetics.jpx.GPX gpx) {
+        this.version = gpx.getVersion();
+        this.metadata = new Metadata(gpx.getMetadata().orElse(null));
 
 
-    public GPXRequest getGpxRequest() {
-        return gpxRequest;
-    }
-
-    public void setGpxRequest(GPXRequest gpxRequest) {
-        this.gpxRequest = gpxRequest;
+        List<io.jenetics.jpx.Track> tracks = gpx.getTracks();
+        if (CollectionUtils.isNotEmpty(tracks)) {
+            List<Track> newTracks = new ArrayList<>();
+            tracks.forEach(track -> {
+                newTracks.add(new Track(track));
+            });
+            this.tracks = newTracks;
+        }
     }
 
     private LocalDateTime createdTime = LocalDateTime.now(ZoneOffset.UTC);
 
     private LocalDateTime updatedTime = LocalDateTime.now(ZoneOffset.UTC);
 
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getFileName() {
-        return fileName;
-    }
-
-    public void setFileName(String fileName) {
-        this.fileName = fileName;
-    }
 
     public String getVersion() {
         return version;
@@ -107,17 +88,15 @@ public class GpxMessageData extends TrackerMessageData {
         this.updatedTime = updatedTime;
     }
 
+
     @Override
     public String toString() {
         return new ToStringBuilder(this)
-                .append("id", id)
-                .append("fileName", fileName)
                 .append("version", version)
                 .append("metadata", metadata)
                 .append("tracks", tracks)
                 .append("createdTime", createdTime)
                 .append("updatedTime", updatedTime)
-                .append("GpxRequest", gpxRequest)
                 .toString();
     }
 }

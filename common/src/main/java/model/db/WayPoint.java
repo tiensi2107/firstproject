@@ -1,10 +1,20 @@
 package model.db;
 
+import io.jenetics.jpx.Latitude;
+import io.jenetics.jpx.Longitude;
+import model.dto.Link;
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.time.ZoneOffset;
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
-public class WayPoint {
+public class WayPoint implements Serializable {
+
     private Long id;
 
     private Double latitude;
@@ -30,6 +40,7 @@ public class WayPoint {
     private String source;
 
 
+    private List<Link> links;
 
 
     private String symbol;
@@ -39,10 +50,14 @@ public class WayPoint {
 
 
 
-
     public WayPoint() {
     }
 
+
+
+   public WayPoint(io.jenetics.jpx.WayPoint wayPoint) {
+        this.update(wayPoint);
+    }
 
     public Long getId() {
         return id;
@@ -124,7 +139,13 @@ public class WayPoint {
         this.source = source;
     }
 
+    public List<Link> getLinks() {
+        return links;
+    }
 
+    public void setLinks(List<Link> links) {
+        this.links = links;
+    }
 
     public String getSymbol() {
         return symbol;
@@ -143,7 +164,18 @@ public class WayPoint {
     }
 
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        WayPoint wayPoint = (WayPoint) o;
+        return id.equals(wayPoint.id);
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
 
     @Override
     public String toString() {
@@ -158,8 +190,34 @@ public class WayPoint {
                 .append("comment", comment)
                 .append("description", description)
                 .append("source", source)
+                .append("links", links)
                 .append("symbol", symbol)
                 .append("type", type)
                 .toString();
+    }
+
+
+
+    public void update(io.jenetics.jpx.WayPoint wayPoint) {
+        Latitude latitude = wayPoint.getLatitude();
+        Longitude longitude = wayPoint.getLongitude();
+        if (latitude != null && longitude != null) {
+            this.latitude = latitude.doubleValue();
+            this.longitude = longitude.doubleValue();
+            wayPoint.getComment().ifPresent(this::setComment);
+            wayPoint.getDescription().ifPresent(this::setDescription);
+            wayPoint.getName().ifPresent(this::setName);
+            wayPoint.getSource().ifPresent(this::setSource);
+            wayPoint.getType().ifPresent(this::setType);
+            wayPoint.getTime().ifPresent(zonedDateTime -> this.time = LocalDateTime.ofInstant(zonedDateTime.toInstant(), ZoneOffset.UTC));
+            List<io.jenetics.jpx.Link> links = wayPoint.getLinks();
+            if (CollectionUtils.isNotEmpty(links)) {
+                this.links = links.stream().map(Link::new).collect(Collectors.toList());
+            }
+
+            wayPoint.getSpeed().ifPresent(speed -> this.speed = speed.doubleValue());
+            wayPoint.getElevation().ifPresent(length -> this.elevation = length.doubleValue());
+            wayPoint.getSymbol().ifPresent(this::setSymbol);
+        }
     }
 }

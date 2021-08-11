@@ -4,7 +4,12 @@ public class Email {
     private String id;
     private String domain;
 
-
+    public Email(io.jenetics.jpx.Email email) {
+        if (email != null) {
+            this.id = email.getID();
+            this.domain = email.getDomain();
+        }
+    }
     public String getId() {
         return id;
     }

@@ -1,43 +1,36 @@
 package model.dto;
 
-import io.jenetics.jpx.GPX;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 public class GPXRequest {
-    private GPX gpx;
     private String clientId;
     private String clientSecret;
     private String filename;
     private long consumerAttempts;
+    private model.db.GPX gpxModel;
 
     public GPXRequest() {
     }
 
-    public GPXRequest(GPX gpx, String clientId, String filename) {
-        this.gpx = gpx;
+    public GPXRequest(model.db.GPX gpxModel, String clientId, String filename) {
+        this.gpxModel = gpxModel;
         this.clientId = clientId;
         this.filename = filename;
     }
 
-    public GPXRequest(GPX gpx, String clientId, String clientSecret, String filename) {
-        this.gpx = gpx;
+    public GPXRequest(model.db.GPX gpxModel, String clientId, String clientSecret, String filename) {
+        this.gpxModel = gpxModel;
         this.clientId = clientId;
         this.clientSecret = clientSecret;
         this.filename = filename;
     }
-    public GPXRequest(GPXRequest gpxRequest){
-        this.gpx = gpxRequest.gpx;
-        this.clientId = gpxRequest.clientId;
-        this.clientSecret = gpxRequest.clientSecret;
-        this.filename = gpxRequest.filename;
+
+    public model.db.GPX getGpxModel() {
+        return gpxModel;
     }
 
-    public GPX getGpx() {
-        return gpx;
-    }
-
-    public void setGpx(GPX gpx) {
-        this.gpx = gpx;
+    public void setGpxModel(model.db.GPX gpxModel) {
+        this.gpxModel = gpxModel;
     }
 
     public String getClientId() {
@@ -83,7 +76,7 @@ public class GPXRequest {
                 .append("clientSecret", clientSecret)
                 .append("filename", filename)
                 .append("consumerAttempts", consumerAttempts)
-                .append("gpx", gpx)
+                .append("gpx", gpxModel)
                 .toString();
     }
 }

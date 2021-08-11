@@ -1,13 +1,18 @@
 package model.db;
 
 import model.dto.Link;
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
-public class Track {
+public class Track implements Serializable {
+
     private Long id;
 
 
@@ -37,6 +42,32 @@ public class Track {
     public Track() {
     }
 
+    public Track(io.jenetics.jpx.Track track) {
+        track.getComment().ifPresent(this::setComment);
+        track.getDescription().ifPresent(this::setDescription);
+        track.getName().ifPresent(this::setName);
+        track.getSource().ifPresent(this::setSource);
+        track.getType().ifPresent(this::setType);
+        List<io.jenetics.jpx.Link> links = track.getLinks();
+        if (CollectionUtils.isNotEmpty(links)) {
+            List<Link> newLinks = new ArrayList<>();
+            links.forEach(link -> {
+                newLinks.add(new Link(link));
+            });
+            this.links = newLinks;
+        }
+
+
+        List<io.jenetics.jpx.TrackSegment> segments = track.getSegments();
+        if (CollectionUtils.isNotEmpty(segments)) {
+            List<TrackSegment> trackSegments = new ArrayList<>();
+            segments.forEach(segment -> {
+                trackSegments.add(new TrackSegment(segment));
+            });
+            this.segments = trackSegments;
+        }
+
+    }
 
     public Long getId() {
         return id;
@@ -102,7 +133,6 @@ public class Track {
         this.segments = segments;
     }
 
-
     public LocalDateTime getInsertedTime() {
         return insertedTime;
     }
@@ -111,7 +141,18 @@ public class Track {
         this.insertedTime = createdTime;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Track track = (Track) o;
+        return id.equals(track.id);
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
 
     @Override
     public String toString() {

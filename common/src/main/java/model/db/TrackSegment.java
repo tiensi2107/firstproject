@@ -1,12 +1,17 @@
 package model.db;
 
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
-public class TrackSegment {
+public class TrackSegment implements Serializable {
+
     private Long id;
 
 
@@ -15,12 +20,19 @@ public class TrackSegment {
     private LocalDateTime insertedTime = LocalDateTime.now(ZoneOffset.UTC);
 
 
-    private Track track;
-
     public TrackSegment() {
     }
 
-
+   public TrackSegment(io.jenetics.jpx.TrackSegment trackSegment) {
+        List<io.jenetics.jpx.WayPoint> wayPoints = trackSegment.getPoints();
+        if (CollectionUtils.isNotEmpty(wayPoints)) {
+            List<WayPoint> newWayPoints = new ArrayList<>();
+            wayPoints.forEach(wayPoint -> {
+                newWayPoints.add(new WayPoint(wayPoint));
+            });
+            this.points = newWayPoints;
+        }
+    }
 
     public Long getId() {
         return id;
@@ -46,12 +58,18 @@ public class TrackSegment {
         this.insertedTime = createdTime;
     }
 
-    public Track getTrack() {
-        return track;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        TrackSegment that = (TrackSegment) o;
+        return id.equals(that.id);
     }
 
-    public void setTrack(Track track) {
-        this.track = track;
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 
     @Override
@@ -60,7 +78,6 @@ public class TrackSegment {
                 .append("id", id)
                 .append("points", points)
                 .append("insertedTime", insertedTime)
-                .append("track", track)
                 .toString();
     }
 }

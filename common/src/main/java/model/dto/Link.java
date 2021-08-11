@@ -3,12 +3,20 @@ package model.dto;
 import model.gson.TrackerGson;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-public class Link {
+import java.io.Serializable;
+
+public class Link implements Serializable {
     private String href;
     private String text;
     private String type;
 
-
+    public Link(io.jenetics.jpx.Link link) {
+        if (link != null) {
+            this.href = link.getHref() != null ? link.getHref().getPath() : null;
+            this.text = link.getText().orElse(null);
+            this.type = link.getType().orElse(null);
+        }
+    }
     private Link(String href, String text, String type) {
         this.href = href;
         this.text = text;
@@ -39,9 +47,9 @@ public class Link {
         this.type = type;
     }
 
-    public static Link fromJson(String json) {
+    /*public static Link fromJson(String json) {
         return TrackerGson.getGson().fromJson(json, Link.class);
-    }
+    }*/
 
     @Override
     public String toString() {

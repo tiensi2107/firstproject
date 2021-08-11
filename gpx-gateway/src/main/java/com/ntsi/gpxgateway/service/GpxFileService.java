@@ -34,7 +34,10 @@ public class GpxFileService {
         try (InputStream inputStream = new ByteArrayInputStream(multipartFile.getBytes())) {
             GPX gpx = GPX.read(inputStream);
 
-            GPXRequest gpxRequest = new GPXRequest(gpx, clientId, clientSecret, multipartFile.getOriginalFilename());
+            model.db.GPX newGpx = new model.db.GPX(gpx);
+
+            GPXRequest gpxRequest = new GPXRequest(newGpx, clientId, clientSecret, multipartFile.getOriginalFilename());
+
 
             GpxMessageData gpxMessageData = new GpxMessageData();
             gpxMessageData.setGpxRequest(gpxRequest);
