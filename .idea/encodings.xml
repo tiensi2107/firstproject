@@ -4,5 +4,7 @@
     <file url="file://$PROJECT_DIR$/common/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/gpx-gateway/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/message-processor/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/timeseries-processor/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/timeseries-provider/src/main/java" charset="UTF-8" />
   </component>
 </project>

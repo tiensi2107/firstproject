@@ -8,7 +8,9 @@
         <outputRelativeToContentRoot value="true" />
         <module name="message-processor" />
         <module name="common" />
+        <module name="timeseries-processor" />
         <module name="gpx-gateway" />
+        <module name="timeseries-provider" />
       </profile>
     </annotationProcessing>
   </component>
@@ -17,6 +19,8 @@
       <module name="common" options="-parameters" />
       <module name="gpx-gateway" options="-parameters" />
       <module name="message-processor" options="-parameters" />
+      <module name="timeseries-processor" options="-parameters" />
+      <module name="timeseries-provider" options="-parameters" />
     </option>
   </component>
 </project>

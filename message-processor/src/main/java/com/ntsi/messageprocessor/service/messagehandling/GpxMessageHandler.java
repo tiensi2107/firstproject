@@ -45,7 +45,7 @@ public class GpxMessageHandler extends TrackerMessageHandler{
                                 values.put(MetricType.TRACKER_DATA_GPS_TYPE, wayPoint.getType());
 
 
-                                amqpTemplate.convertAndSend(QueueName.TIMESERIES_MESSAGE_MAIN, values);
+                              //  amqpTemplate.convertAndSend(QueueName.TIMESERIES_MESSAGE_MAIN, values);
 
 
                                 insertMultiple(values, gpxMessageDataData.getTimestamp(), trackerMessage);

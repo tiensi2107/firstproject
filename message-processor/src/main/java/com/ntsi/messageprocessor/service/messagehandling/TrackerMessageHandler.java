@@ -23,6 +23,7 @@ public abstract class TrackerMessageHandler implements MessageHandler{
             String value = values.get(metricType);
             if (value != null){
                 TimeSeriesDataitem item = new TimeSeriesDataitem(tracker.getId(), metricType, messageDate, value, message.getTrackerMessageData().getTrackerDataID());
+                items.add(item);
             }
         }
         timeseriesService.insertMultiple(items, message);

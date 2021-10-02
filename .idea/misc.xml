@@ -7,6 +7,8 @@
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/gpx-gateway/pom.xml" />
         <option value="$PROJECT_DIR$/message-processor/pom.xml" />
+        <option value="$PROJECT_DIR$/timeseries-processor/pom.xml" />
+        <option value="$PROJECT_DIR$/timeseries-provider/pom.xml" />
       </list>
     </option>
   </component>

@@ -34,7 +34,7 @@ public class GeoDecoderListener implements TimeSeriesListener {
         TimeSeriesDataitem locationItem = getLocationItem(items);
         if (locationItem != null) {
             GeoTimeSeriesObject geoTimeSeriesObject = new GeoTimeSeriesObject(locationItem);
-            amqpTemplate.convertAndSend(QueueName.GEODECODER_MESSAGE_MAIN, geoTimeSeriesObject);
+            amqpTemplate.convertAndSend(QueueName.TIMESERIES_MESSAGE_MAIN, geoTimeSeriesObject);
         }
     }
     private TimeSeriesDataitem getLocationItem(List<TimeSeriesDataitem> items){
