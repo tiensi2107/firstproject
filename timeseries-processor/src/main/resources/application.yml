@@ -1,0 +1,5 @@
+influxdb:
+  host: http://127.0.0.1:8086
+  org: firstproject
+  bucket: timeseries-processor
+  token: Lrn8w-TMaSuhSsjmqQnPzC9lkWPuPFziqP-rPHkDqhQjjn9fUx1WGwWjxzfXLoLNYyTPsMA3MmxE0BF-vrc7zA==
