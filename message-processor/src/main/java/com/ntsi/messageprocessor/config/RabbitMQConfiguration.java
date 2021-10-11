@@ -1,6 +1,7 @@
 package com.ntsi.messageprocessor.config;
 
 import com.ntsi.messageprocessor.service.consumer.TrackerMessageConsumer;
+import model.rabbitmq.QueueName;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;

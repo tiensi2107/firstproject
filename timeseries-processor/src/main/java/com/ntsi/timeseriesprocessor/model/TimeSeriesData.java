@@ -19,7 +19,7 @@ public class TimeSeriesData {
     @Column(tag = true)
     private MetricType metricType;
 
-    @Column(tag = true)
+    @Column(timestamp = true)
     private Instant timestamp;
 
     @Column(tag = true)

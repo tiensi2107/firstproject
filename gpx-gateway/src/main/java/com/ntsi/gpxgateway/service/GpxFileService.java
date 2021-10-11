@@ -4,7 +4,6 @@ import io.jenetics.jpx.GPX;
 import model.db.GpxMessageData;
 import model.dto.GPXRequest;
 import model.dto.TrackerMessageInfo;
-import model.rabbitmq.ExchangeName;
 import model.rabbitmq.QueueName;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -17,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.time.LocalDateTime;
 
 @Service
 public class GpxFileService {
@@ -40,15 +40,16 @@ public class GpxFileService {
 
 
             GpxMessageData gpxMessageData = new GpxMessageData();
+            gpxMessageData.setTimestamp(LocalDateTime.now());
+            gpxMessageData.setTrackerDataID("1");
             gpxMessageData.setGpxRequest(gpxRequest);
 
             TrackerMessageInfo trackerMessageInfo = new TrackerMessageInfo();
-            trackerMessageInfo.setImei("abcdef123456");
+            trackerMessageInfo.setImei("123");
             trackerMessageInfo.setTrackerMessageData(gpxMessageData);
 
             log.info("Receive gpx file request {} from {}", gpxRequest, clientId);
-            amqpTemplate.convertAndSend(ExchangeName.RABBITMQ_EXCHANGE_DIRECT_REQUEST_MAIN,
-                    QueueName.RABBITMQ_QUEUE_GPX_REQUEST_MAIN, trackerMessageInfo);
+            amqpTemplate.convertAndSend(QueueName.TRACKER_MESSAGE_MAIN, trackerMessageInfo);
             log.info("Queued gpx file request {}", gpxRequest);
 
             return new ResponseEntity<>(HttpStatus.ACCEPTED);

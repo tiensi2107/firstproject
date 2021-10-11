@@ -1,5 +1,6 @@
 package com.ntsi.messageprocessor.config;
 
+import model.rabbitmq.QueueName;
 import org.springframework.amqp.core.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -21,8 +22,6 @@ public class RabbitMQProvision {
         List<Declarable> declarables = new ArrayList<>();
         declarables.addAll(basicQueueAndParkingLot(QueueName.TRACKER_MESSAGE_MAIN));
         declarables.addAll(basicQueueAndParkingLot(QueueName.TIMESERIES_MESSAGE_MAIN));
-        //declarables.addAll(basicQueueAndParkingLot(QueueName.GEODECODER_MESSAGE_MAIN));
-        //declarables.addAll(basicQueueAndParkingLot(QueueName.ALERT_MESSAGE_MAIN));
         return new Declarables(declarables.toArray(new Declarable[0]));
     }
 

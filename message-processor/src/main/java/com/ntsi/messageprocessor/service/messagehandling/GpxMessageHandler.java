@@ -1,7 +1,7 @@
 package com.ntsi.messageprocessor.service.messagehandling;
 
-import com.ntsi.messageprocessor.config.QueueName;
 import model.db.*;
+import model.dto.GPXRequest;
 import model.dto.TrackerMessage;
 import org.apache.commons.collections.CollectionUtils;
 import org.springframework.amqp.core.AmqpTemplate;
@@ -22,7 +22,9 @@ public class GpxMessageHandler extends TrackerMessageHandler{
     public void handle(TrackerMessage trackerMessage) {
         GpxMessageData gpxMessageDataData = (GpxMessageData) trackerMessage.getTrackerMessageData();
 
-        List<Track> tracks = gpxMessageDataData.getTracks();
+        GPXRequest gpxRequest = gpxMessageDataData.getGpxRequest();
+        GPX gpxModel = gpxRequest.getGpxModel();
+        List<Track> tracks = gpxModel.getTracks();
         if (CollectionUtils.isNotEmpty(tracks)) {
             tracks.forEach(track -> {
                 List<TrackSegment> segments = track.getSegments();
@@ -45,7 +47,6 @@ public class GpxMessageHandler extends TrackerMessageHandler{
                                 values.put(MetricType.TRACKER_DATA_GPS_TYPE, wayPoint.getType());
 
 
-                              //  amqpTemplate.convertAndSend(QueueName.TIMESERIES_MESSAGE_MAIN, values);
 
 
                                 insertMultiple(values, gpxMessageDataData.getTimestamp(), trackerMessage);

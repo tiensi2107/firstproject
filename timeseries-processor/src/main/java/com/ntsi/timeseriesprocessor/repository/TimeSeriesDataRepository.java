@@ -18,7 +18,7 @@ public class TimeSeriesDataRepository {
     }
     public void save(List<TimeSeriesData> timeSeriesDataList){
         try (WriteApi writeApi = influxDBClient.getWriteApi()){
-            writeApi.writeMeasurement(WritePrecision.NS, timeSeriesDataList);
+            writeApi.writeMeasurements(WritePrecision.NS, timeSeriesDataList);
         }
     }
 }

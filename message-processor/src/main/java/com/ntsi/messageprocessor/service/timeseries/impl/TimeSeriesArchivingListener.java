@@ -1,12 +1,12 @@
 package com.ntsi.messageprocessor.service.timeseries.impl;
 
-import com.ntsi.messageprocessor.config.QueueName;
 import com.ntsi.messageprocessor.config.RabbitMQConfiguration;
 import com.ntsi.messageprocessor.service.timeseries.TimeSeriesListener;
 import com.ntsi.messageprocessor.service.timeseries.TimeSeriesService;
 import model.db.TimeSeriesDataitem;
 import model.dto.ArchivingTimeSeriesObject;
 import model.dto.TrackerMessage;
+import model.rabbitmq.QueueName;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
