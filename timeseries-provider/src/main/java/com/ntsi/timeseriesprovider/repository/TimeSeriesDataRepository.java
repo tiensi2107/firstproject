@@ -22,12 +22,12 @@ public class TimeSeriesDataRepository {
         this.influxDBClient = influxDBClient;
         this.influxFactory = influxFactory;
     }
-    public List<FluxTable> getLatestTrackerData(Long trackerId){
+    public List<FluxTable> getLatestTrackerData(Long trackerID){
         String query = Flux.from(influxFactory.getBucket())
-                .range(LocalDateTime.now().minusDays(100).toInstant(ZoneOffset.UTC), LocalDateTime.now().plusDays(5).toInstant(ZoneOffset.UTC))
+                .range(LocalDateTime.now().minusDays(50).toInstant(ZoneOffset.UTC), LocalDateTime.now().plusDays(5).toInstant(ZoneOffset.UTC))
                 .filter(Restrictions.and(
                         Restrictions.measurement().equal("timeseries"),
-                        Restrictions.tag("trackerId").equal(String.valueOf(trackerId))))
+                        Restrictions.tag("trackerID").equal(String.valueOf(trackerID))))
                         .toString();
         return influxDBClient.getQueryApi().query(query);
     }

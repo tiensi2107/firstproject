@@ -23,7 +23,7 @@ public class InfluxFactory {
 
     @Bean
     public InfluxDBClient influxDBClient(){
-        return InfluxDBClientFactory.create(host, token.toCharArray(), bucket, org);
+        return InfluxDBClientFactory.create(host, token.toCharArray(), org, bucket);
     }
     public String getHost() {
         return host;

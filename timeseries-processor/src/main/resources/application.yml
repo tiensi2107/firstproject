@@ -2,4 +2,4 @@ influxdb:
   host: http://127.0.0.1:8086
   org: firstproject
   bucket: timeseries-processor
-  token: Lrn8w-TMaSuhSsjmqQnPzC9lkWPuPFziqP-rPHkDqhQjjn9fUx1WGwWjxzfXLoLNYyTPsMA3MmxE0BF-vrc7zA==
+  token: fpvUCKlr26GmEP7m1zJkDDGwMT2f_Kzspk69rQtDdl-GMwLiknoihwq3bll35a0CKWbX64A7zyPy1UFCDn5rUg==

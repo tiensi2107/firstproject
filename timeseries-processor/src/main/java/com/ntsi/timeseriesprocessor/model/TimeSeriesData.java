@@ -13,22 +13,22 @@ import java.time.ZoneOffset;
 @Measurement(name = "timeseries")
 public class TimeSeriesData {
 
-    @Column(tag = true)
+    @Column
     private String trackerID;
 
-    @Column(tag = true)
+    @Column
     private MetricType metricType;
 
-    @Column(timestamp = true)
+    @Column
     private Instant timestamp;
 
-    @Column(tag = true)
+    @Column
     private Instant insertTime = LocalDateTime.now().toInstant(ZoneOffset.UTC);
 
-    @Column(tag = true)
+    @Column
     private String metricValue;
 
-    @Column(tag = true)
+    @Column
     private String trackerDataId;
 
     public TimeSeriesData(){

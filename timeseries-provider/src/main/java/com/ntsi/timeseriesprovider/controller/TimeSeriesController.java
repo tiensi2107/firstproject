@@ -24,8 +24,8 @@ public class TimeSeriesController {
         GsonBuilder builder = TrackerGson.getBuilder(TrackerGson.GsonAdapter.ISO_8601_NO_MILLI);
         return builder.create();
     }
-    @GetMapping(path = "{trackerId}/latest", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> getLatestTrackerData(@PathVariable Long trackerId){
-        return new ResponseEntity<>(getGson().toJson(timeSeriesService.getLatestTrackerData(trackerId)), HttpStatus.OK);
+    @GetMapping(path = "/{trackerID}/latest", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> getLatestTrackerData(@PathVariable Long trackerID){
+        return new ResponseEntity<>(getGson().toJson(timeSeriesService.getLatestTrackerData(trackerID)), HttpStatus.OK);
     }
 }
